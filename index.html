@@ -833,6 +833,102 @@ color:#94a3b8;
 
 }
 
+/* ============================= */
+/* MOBILE — BOTÕES PREMIUM CENTRALIZADOS */
+/* ============================= */
+
+@media(max-width:768px){
+
+.footer{
+
+flex-direction:row;
+align-items:center;
+justify-content:center;
+gap:18px;
+
+}
+
+/* BOTÃO BASE */
+
+.nav{
+
+width:52px;
+height:52px;
+
+padding:0;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:0;
+
+position:relative;
+
+background:linear-gradient(145deg,#ff8c42,#CC6319);
+
+box-shadow:
+0 8px 25px rgba(255,140,66,0.45),
+inset 0 0 10px rgba(255,255,255,0.08);
+
+transition:.25s ease;
+
+}
+
+/* SETA CENTRAL PERFEITA */
+
+.nav::before{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:22px;
+font-weight:700;
+
+color:white;
+
+}
+
+/* seta esquerda */
+
+.nav:first-child::before{
+content:"‹";
+}
+
+/* seta direita */
+
+.nav:last-child::before{
+content:"›";
+}
+
+/* hover premium */
+
+.nav:active{
+
+transform:scale(.92);
+
+box-shadow:
+0 4px 15px rgba(255,140,66,0.4),
+inset 0 0 15px rgba(0,0,0,0.4);
+
+}
+
+/* barra menor e central */
+
+.bar{
+
+max-width:140px;
+
+}
+
+}
+
 </style>
 </head>
 <body>
@@ -1174,10 +1270,7 @@ O descumprimento pode resultar em cancelamento ou notificação disciplinar.
 <p>
 As reuniões ocorrem quinzenalmente.<br><br>
 
-A liderança agradece por escolher os Organizadores de Rondas.<br>
-
-Após sua admissão, você receberá o link do grupo oficial.<br>
-Avise ao miitar a finalização da admissão. <br>
+Parabéns, você concluiu a parte teórica do teste de admissão! Avise ao aplicador para iniciar a parte prática, boa sorte!<br>
 </p>
 
 </div>
@@ -1201,7 +1294,7 @@ Avise ao miitar a finalização da admissão. <br>
 <div class="fill" id="fill"></div>
 </div>
 
-<button class="nav" onclick="next()">
+<button class="nav" onclick="next()" id="nextBtn">
 Próximo →
 </button>
 
@@ -1290,17 +1383,29 @@ let index=0;
 
 function update(){
 
-slides.forEach(s=>s.classList.remove("active"));
+slides.forEach(s => s.classList.remove("active"));
 slides[index].classList.add("active");
 
-document.getElementById("fill").style.width=
+document.getElementById("fill").style.width =
 ((index+1)/slides.length)*100+"%";
+
+const nextBtn = document.getElementById("nextBtn");
+
+if(nextBtn){
+
+if(index === slides.length - 1){
+nextBtn.style.visibility = "hidden";
+}else{
+nextBtn.style.visibility = "visible";
+}
+
+}
 
 }
 
 function next(){
 
-if(index<slides.length-1){
+if(index < slides.length - 1){
 
 index++;
 update();
@@ -1311,7 +1416,7 @@ update();
 
 function prev(){
 
-if(index>0){
+if(index > 0){
 
 index--;
 update();
