@@ -929,6 +929,197 @@ max-width:140px;
 
 }
 
+.startBtn{
+
+margin-top:30px;
+
+background:linear-gradient(90deg,#CC6319,#ff8c42);
+
+border:none;
+padding:16px 40px;
+
+border-radius:40px;
+
+font-weight:700;
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+/* COR DO TEXTO */
+color:white;
+
+/* REMOVE ESTILO MOBILE */
+-webkit-appearance:none;
+appearance:none;
+
+/* REMOVE AZUL AO TOCAR */
+-webkit-tap-highlight-color:transparent;
+
+/* REMOVE SELEÇÃO */
+user-select:none;
+
+/* REMOVE OUTLINE */
+outline:none;
+
+}
+
+button{
+
+-webkit-tap-highlight-color:transparent;
+-webkit-appearance:none;
+appearance:none;
+
+outline:none;
+border:none;
+
+}
+
+/* ========================= */
+/* BOTÃO DIRETRIZES PREMIUM */
+/* ========================= */
+
+.btn-diretrizes{
+
+position:relative;
+
+display:block;
+
+margin-top:30px;
+
+padding:16px 20px;
+
+border-radius:14px;
+
+text-decoration:none;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,140,66,0.10),
+rgba(255,140,66,0.02)
+);
+
+border:1px solid rgba(255,140,66,0.25);
+
+box-shadow:
+0 0 20px rgba(255,140,66,0.15),
+inset 0 0 15px rgba(255,140,66,0.05);
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+/* conteúdo interno */
+
+.btn-diretrizes-content{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+position:relative;
+z-index:2;
+
+}
+
+/* ícone */
+
+.btn-diretrizes-icon{
+
+font-size:22px;
+
+filter:drop-shadow(0 0 8px rgba(255,140,66,0.6));
+
+}
+
+/* título */
+
+.btn-diretrizes-title{
+
+font-size:15px;
+font-weight:600;
+
+color:#ff8c42;
+
+transition:.3s;
+
+}
+
+/* subtitulo */
+
+.btn-diretrizes-sub{
+
+font-size:12px;
+
+color:#94a3b8;
+
+}
+
+/* brilho animado */
+
+.btn-diretrizes-shine{
+
+position:absolute;
+
+top:0;
+left:-100%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.25),
+transparent
+);
+
+transition:.6s;
+
+}
+
+/* hover */
+
+.btn-diretrizes:hover{
+
+transform:translateY(-2px);
+
+border:1px solid rgba(255,140,66,0.5);
+
+box-shadow:
+0 0 40px rgba(255,140,66,0.45),
+inset 0 0 25px rgba(255,140,66,0.1);
+
+}
+
+.btn-diretrizes:hover .btn-diretrizes-title{
+
+color:white;
+
+}
+
+.btn-diretrizes:hover .btn-diretrizes-shine{
+
+left:100%;
+
+}
+
+/* clique */
+
+.btn-diretrizes:active{
+
+transform:scale(.97);
+
+box-shadow:
+0 0 15px rgba(255,140,66,0.5);
+
+}
+
 </style>
 </head>
 <body>
@@ -1250,6 +1441,36 @@ Todas as rondas possuem regras específicas.<br><br>
 O descumprimento pode resultar em cancelamento ou notificação disciplinar.
 </p>
 
+<!-- BOTÃO PREMIUM DIRETRIZES -->
+
+<a href="https://www.policiarcc.com/t38077-rond-manual-de-como-fazer-rondas"
+   target="_blank"
+   class="btn-diretrizes">
+
+<div class="btn-diretrizes-content">
+
+<div class="btn-diretrizes-icon">
+📖
+</div>
+
+<div class="btn-diretrizes-text">
+
+<div class="btn-diretrizes-title">
+ACESSAR DIRETRIZES
+</div>
+
+<div class="btn-diretrizes-sub">
+Manual completo das rondas
+</div>
+
+</div>
+
+</div>
+
+<div class="btn-diretrizes-shine"></div>
+
+</a>
+
 </div>
 
 <div class="img">
@@ -1268,7 +1489,7 @@ O descumprimento pode resultar em cancelamento ou notificação disciplinar.
 <h2>FINALIZAÇÃO</h2>
 
 <p>
-As reuniões ocorrem quinzenalmente.<br><br>
+
 
 Parabéns, você concluiu a parte teórica do teste de admissão! Avise ao aplicador para iniciar a parte prática, boa sorte!<br>
 </p>
