@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<title>[ROND] • Admissão</title>
+   <link rel="icon" href="https://www.habbo.com.br/habbo-imaging/badge/b08104s36044s22014s79013s80015cace494c05411afb7d7721ea8513a493.gif" />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html, body{
+width:100%;
+height:100%;
+}
+
+body{
+
+font-family:Poppins, sans-serif;
+
+background:
+radial-gradient(circle at 20% 20%, rgba(255,140,66,0.08), transparent),
+radial-gradient(circle at 80% 60%, rgba(255,140,66,0.06), transparent),
+#02070d;
+
+color:white;
+
+/* desktop travado, mobile liberado via media */
+overflow-x:hidden;
+overflow-y:hidden;
+
+}
+
+/* ========================= */
+/* PARTICLES */
+/* ========================= */
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+/* ========================= */
+/* WRAPPER — SISTEMA PRINCIPAL */
+/* ========================= */
+
+.wrapper{
+
+position:relative;
+z-index:2;
+
+display:flex;
+
+width:200%; /* CRÍTICO para desktop */
+height:100vh;
+
+transition:transform 1s cubic-bezier(.77,0,.18,1);
+
+}
+
+/* ========================= */
+/* CADA TELA */
+/* ========================= */
+
+.home,
+.slides{
+
+width:50%; /* metade do wrapper */
+height:100vh;
+
+flex-shrink:0;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:40px;
+
+}
+
+/* ========================= */
+/* HOME */
+/* ========================= */
+
+.home-inner{
+
+width:1200px;
+max-width:100%;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+gap:60px;
+
+}
+
+/* LEFT */
+
+.left{
+max-width:600px;
+animation:fadeUp 1s ease;
+}
+
+/* TAG */
+
+.tag-wrapper{
+
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:20px;
+
+}
+
+.tag-icon{
+
+width:38px;
+height:38px;
+
+border-radius:10px;
+
+background:radial-gradient(circle,#ff8c42,#CC6319);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+box-shadow:0 0 20px rgba(255,140,66,0.6);
+
+}
+
+.tag-icon img{
+width:22px;
+}
+
+.tag{
+
+font-size:14px;
+letter-spacing:2px;
+color:#ff8c42;
+font-weight:600;
+
+}
+
+/* TITLE */
+
+.title{
+
+font-size:72px;
+font-weight:800;
+
+background:linear-gradient(180deg,#fff,#aaa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* DESC */
+
+.desc{
+
+margin-top:15px;
+font-size:18px;
+color:#8b98a5;
+
+}
+
+/* BUTTON */
+
+.startBtn{
+
+margin-top:30px;
+
+background:linear-gradient(90deg,#CC6319,#ff8c42);
+
+border:none;
+padding:16px 40px;
+
+border-radius:40px;
+
+font-weight:700;
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.startBtn:hover{
+
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(255,140,66,0.5);
+
+}
+
+/* RIGHT IMAGE */
+
+.right img{
+
+height:320px;
+
+filter:drop-shadow(0 0 40px rgba(255,140,66,0.3));
+
+animation:float 6s infinite ease-in-out;
+
+}
+
+/* ========================= */
+/* SLIDES */
+/* ========================= */
+
+.slides{
+
+padding:30px;
+
+}
+
+/* CARD */
+
+.card{
+
+position:relative;
+
+width:1000px;
+max-width:100%;
+
+border-radius:20px;
+
+padding:50px;
+
+background:
+linear-gradient(
+145deg,
+rgba(20,10,5,0.97),
+rgba(12,6,3,0.97)
+);
+
+box-shadow:
+0 40px 120px rgba(0,0,0,0.9),
+0 0 60px rgba(255,140,66,0.1);
+
+}
+
+/* CLOSE */
+
+.close{
+
+position:absolute;
+top:20px;
+right:20px;
+
+font-size:22px;
+color:#ff8c42;
+cursor:pointer;
+
+}
+
+/* SLIDE */
+
+.slide{
+
+position:absolute;
+
+opacity:0;
+transform:translateX(40px);
+
+transition:.4s;
+
+display:flex;
+align-items:center;
+gap:40px;
+
+pointer-events:none;
+
+}
+
+.slide.active{
+
+position:relative;
+
+opacity:1;
+transform:none;
+
+pointer-events:auto;
+
+}
+
+/* TEXT */
+
+.text{
+flex:1;
+}
+
+.text h2{
+
+font-size:28px;
+margin-bottom:15px;
+
+background:linear-gradient(90deg,#ff8c42,#fff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.text p{
+
+font-size:15px;
+color:#94a3b8;
+line-height:1.7;
+
+}
+
+/* IMAGE */
+
+.img{
+
+flex:1;
+display:flex;
+justify-content:center;
+
+}
+
+.img img{
+
+width:420px;
+height:240px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+}
+
+/* ============================= */
+/* FOOTER PADRÃO (DESKTOP) */
+/* ============================= */
+
+.footer{
+
+margin-top:40px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+gap:20px;
+
+}
+
+/* BOTÕES DESKTOP */
+
+.nav{
+
+padding:12px 28px;
+
+border:none;
+
+border-radius:30px;
+
+font-weight:600;
+font-size:15px;
+
+color:white;
+
+cursor:pointer;
+
+background:linear-gradient(90deg,#CC6319,#ff8c42);
+
+box-shadow:0 8px 25px rgba(255,140,66,0.3);
+
+transition:.25s ease;
+
+}
+
+.nav:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 15px 40px rgba(255,140,66,0.5);
+
+}
+
+.nav:active{
+transform:scale(.97);
+}
+
+/* ============================= */
+/* MOBILE PREMIUM VERSION */
+/* ============================= */
+
+@media(max-width:768px){
+
+.footer{
+
+flex-direction:column;
+gap:14px;
+width:100%;
+
+}
+
+.nav{
+
+width:100%;
+padding:14px 18px;
+
+border-radius:14px;
+
+font-size:15px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+box-shadow:
+0 8px 25px rgba(255,140,66,0.35),
+inset 0 0 12px rgba(255,255,255,0.08);
+
+position:relative;
+
+}
+
+/* brilho animado só mobile */
+
+.nav::before{
+
+content:"";
+position:absolute;
+inset:0;
+border-radius:14px;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.25),
+transparent
+);
+
+opacity:0;
+transition:.4s;
+
+}
+
+.nav:hover::before{
+opacity:1;
+}
+
+}
+
+/* hover */
+
+.nav:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 12px 35px rgba(255,140,66,0.55),
+inset 0 0 15px rgba(255,255,255,0.12);
+
+}
+
+.nav:hover::before{
+
+opacity:1;
+
+animation:shine 1.2s linear;
+
+}
+
+/* clique */
+
+.nav:active{
+
+transform:scale(.97);
+
+box-shadow:
+0 4px 15px rgba(255,140,66,0.4),
+inset 0 0 10px rgba(0,0,0,0.4);
+
+}
+
+/* animação brilho */
+
+@keyframes shine{
+
+0%{
+transform:translateX(-100%);
+}
+
+100%{
+transform:translateX(100%);
+}
+
+}
+
+/* BAR */
+
+.bar{
+
+flex:1;
+
+height:6px;
+
+background:#222;
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+.fill{
+
+height:100%;
+width:0%;
+
+background:linear-gradient(90deg,#CC6319,#ff8c42);
+
+}
+
+/* ========================= */
+/* TOASTY */
+/* ========================= */
+
+#l2ro-toasty{
+
+position:fixed;
+bottom:-200px;
+right:20px;
+
+display:flex;
+gap:10px;
+
+opacity:0;
+
+transition:.5s;
+
+z-index:999;
+
+}
+
+#l2ro-toasty.show{
+
+bottom:20px;
+opacity:1;
+
+}
+
+#l2ro-character{
+height:70px;
+}
+
+#l2ro-bubble{
+
+background:linear-gradient(90deg,#CC6319,#ff8c42);
+
+padding:10px 15px;
+
+border-radius:12px;
+
+font-size:14px;
+
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:none;}
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+/* ================================= */
+/* MOBILE — SISTEMA SEPARADO */
+/* ================================= */
+
+@media(max-width:768px){
+
+body{
+overflow-y:auto;
+}
+
+/* wrapper vira vertical */
+
+.wrapper{
+
+width:100%;
+height:auto;
+
+flex-direction:column;
+
+transform:none !important;
+
+}
+
+/* esconder slides inicialmente */
+
+.slides{
+
+display:none;
+width:100%;
+
+}
+
+/* quando abrir */
+
+.wrapper.showSlides .home{
+display:none;
+}
+
+.wrapper.showSlides .slides{
+display:flex;
+}
+
+/* home */
+
+.home{
+height:auto;
+}
+
+.home-inner{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+/* title */
+
+.title{
+font-size:40px;
+}
+
+/* image */
+
+.right img{
+height:200px;
+}
+
+/* card */
+
+.card{
+
+width:100%;
+max-width:400px;
+
+padding:25px;
+margin:auto;
+
+}
+
+/* slide */
+
+.slide{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+/* image */
+
+.img img{
+
+width:100%;
+height:auto;
+max-width:300px;
+
+}
+
+/* footer */
+
+.footer{
+flex-direction:column;
+}
+
+.nav{
+width:100%;
+}
+
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:480px){
+
+.title{
+font-size:32px;
+}
+
+.text h2{
+font-size:22px;
+}
+
+.text p{
+font-size:14px;
+}
+
+}
+
+/* ================================= */
+/* FIX DEFINITIVO MOBILE */
+/* ================================= */
+
+@media(max-width:768px){
+
+/* wrapper não pode ser 200% no mobile */
+
+.wrapper{
+
+width:100% !important;
+height:auto !important;
+
+display:block !important;
+
+transform:none !important;
+
+}
+
+/* telas ocupam 100% */
+
+.home,
+.slides{
+
+width:100% !important;
+height:auto !important;
+min-height:100vh;
+
+}
+
+/* slides escondido inicialmente */
+
+.slides{
+display:none;
+}
+
+/* quando ativo */
+
+.wrapper.showSlides .home{
+display:none;
+}
+
+.wrapper.showSlides .slides{
+display:flex;
+}
+
+}
+
+.leaders{
+display:flex;
+gap:40px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.leader{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+}
+
+.leader img{
+
+height:140px;
+
+image-rendering:pixelated;
+
+filter:
+drop-shadow(0 0 20px rgba(255,140,66,0.4));
+
+transition:.3s;
+
+}
+
+.leader img:hover{
+
+transform:scale(1.1);
+
+filter:
+drop-shadow(0 0 40px rgba(255,140,66,0.9));
+
+}
+
+.leader span{
+
+font-size:14px;
+text-align:center;
+color:#94a3b8;
+
+}
+
+</style>
+</head>
+<body>
+
+    <!-- TOASTY L2RO SYSTEM -->
+<div id="l2ro-toasty">
+
+    <img src="https://i.imgur.com/U0Ljy7F.png" id="l2ro-character">
+
+    <div id="l2ro-bubble">
+        Sistema criado por <b>L2ro</b>
+    </div>
+
+</div>
+
+<canvas id="particles"></canvas>
+
+<div class="wrapper" id="wrapper">
+
+<!-- HOME -->
+
+<div class="home">
+
+<div class="home-inner">
+
+<div class="left">
+
+<div class="tag-wrapper">
+
+<div class="tag-icon">
+
+<img src="https://www.habbo.com.br/habbo-imaging/badge/b09024s43131s50134s17113s171156ce0e38b73dfada6ba2b3f411d65e69b.gif">
+
+</div>
+
+<div class="tag">
+ORGANIZADORES DE RONDAS
+</div>
+
+</div>
+
+<div class="title">
+
+ADMISSÃO
+
+</div>
+
+<div class="desc" id="welcome">
+
+Carregando...
+
+</div>
+
+<button class="startBtn" onclick="openSlides()">
+
+Iniciar leitura
+
+</button>
+
+</div>
+
+<div class="right">
+
+<img src="https://i.imgur.com/HfFoouw.png">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SLIDES -->
+
+<div class="slides">
+
+<div class="card">
+
+<div class="close" onclick="closeSlides()">✕</div>
+
+<!-- SLIDE 1 — INTRODUÇÃO -->
+
+<div class="slide active">
+
+<div class="text">
+
+<h2>INTRODUÇÃO</h2>
+
+<p>
+Os Organizadores de Rondas foram fundados em meados de 2011 pelo militar <b>New.Shadow</b>.<br><br>
+
+A subcompanhia tem como principal objetivo o combate direto ao crime no Habbo Hotel por meio de rondas organizadas.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/3klHzDo.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 2 — MISSÃO -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>MISSÃO DA SUBCOMPANHIA</h2>
+
+<p>
+As rondas têm como finalidade garantir a segurança, ordem e fortalecimento institucional.<br><br>
+
+Como membro, você fará parte de uma estrutura especializada, responsável por ações estratégicas e operacionais.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/QuboH71.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 3 — HIERARQUIA -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>HIERARQUIA</h2>
+
+<p>
+A hierarquia é composta por 7 cargos progressivos:<br><br>
+
+<b>
+Organizador de Rondas > Tutor > Graduador > Estagiário > Ministro > Vice-líder > Líder<br>
+</b>
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/aTgNEVk.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 4 — PROGRESSÃO -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>PROGRESSÃO</h2>
+
+<p>
+Ao ser aprovado, você iniciará como <b>Organizador de Rondas</b>.<br><br>
+
+Com dedicação e bom desempenho, poderá ser promovido progressivamente até os cargos superiores.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/aTgNEVk.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 5 — MINISTÉRIO -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>MINISTÉRIO</h2>
+
+<p>
+O Ministério é composto por membros com cargo de <b>Estagiário ou superior</b>.<br><br>
+
+Eles estão preparados para orientar, auxiliar e garantir seu melhor desempenho.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/35Of2sa.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 6 — LIDERANÇA -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>LIDERANÇA</h2>
+
+<p>
+A liderança atual é composta por:
+</p>
+
+<div class="leaders">
+
+<div class="leader">
+<img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=Aloscon&action=wav&direction=3&gesture=sml&size=l">
+<span>Líder<br><b>Aloscon</b></span>
+</div>
+
+<div class="leader">
+<img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=Kesie&action=wav&direction=3&gesture=sml&size=l">
+<span>Vice-líder<br><b>Kesie</b></span>
+</div>
+
+<div class="leader">
+<img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=diego21927&action=wav&direction=3&gesture=sml&size=l">
+<span>Vice-líder<br><b>diego21927</b></span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SLIDE 7 — RESPONSABILIDADES -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>RESPONSABILIDADES</h2>
+
+<p>
+Todos os membros devem cumprir a meta semanal de <b>100%</b> em aplicações.<br><br>
+
+Cada atividade possui valores específicos que contribuem para sua progressão.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/l40crpm.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 8 — ATIVIDADES -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>ATIVIDADES</h2>
+
+<p>
+Recrutamento Ostensivo → 90%<br>
+Curso Prático → 75%<br>
+Ronda de Recrutamento → 50%<br>
+Ronda de Divulgação → 40%<br>
+Denunciar Infratores → 20%<br>
+Fechar Quartos → 20%
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/xAfQVnT.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 9 — BÔNUS -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>BÔNUS</h2>
+
+<p>
+Você pode ganhar bônus adicionais ao:<br><br>
+
+• Utilizar o fardamento oficial<br>
+• Realizar rondas em grupo ou com tutor<br><br>
+
+Cada bônus pode adicionar +10%.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/C0o97ID.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 10 — DIRETRIZES -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>DIRETRIZES</h2>
+
+<p>
+Todas as rondas possuem regras específicas.<br><br>
+
+O descumprimento pode resultar em cancelamento ou notificação disciplinar.
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/EiQmSiA.png">
+</div>
+
+</div>
+
+
+<!-- SLIDE 11 — FINALIZAÇÃO -->
+
+<div class="slide">
+
+<div class="text">
+
+<h2>FINALIZAÇÃO</h2>
+
+<p>
+As reuniões ocorrem quinzenalmente.<br><br>
+
+A liderança agradece por escolher os Organizadores de Rondas.<br>
+
+Após sua admissão, você receberá o link do grupo oficial.<br>
+Avise ao miitar a finalização da admissão. <br>
+</p>
+
+</div>
+
+<div class="img">
+<img src="https://i.imgur.com/L4vXthA.png">
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<button class="nav" onclick="prev()">
+← Anterior
+</button>
+
+<div class="bar">
+<div class="fill" id="fill"></div>
+</div>
+
+<button class="nav" onclick="next()">
+Próximo →
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* ========================= */
+/* PARTICLES WAVE STYLE */
+/* ========================= */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<120;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2,
+speedY:Math.random()*0.6,
+speedX:Math.random()*0.2
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(255,140,66,0.6)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fill();
+
+p.y+=p.speedY;
+p.x+=p.speedX;
+
+if(p.y>canvas.height)p.y=0;
+if(p.x>canvas.width)p.x=0;
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+/* ========================= */
+/* USER NAME SYSTEM */
+/* ========================= */
+
+let nome="Visitante";
+
+try{
+
+let el=document.querySelector(".postprofile-name");
+
+if(el) nome=el.innerText;
+
+}catch{}
+
+document.getElementById("welcome").innerHTML=
+
+"Olá <b>"+nome+"</b>, chegou a hora de iniciar sua admissão nos Organizadores de Rondas.";
+
+/* ========================= */
+/* SLIDES */
+/* ========================= */
+
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+function update(){
+
+slides.forEach(s=>s.classList.remove("active"));
+slides[index].classList.add("active");
+
+document.getElementById("fill").style.width=
+((index+1)/slides.length)*100+"%";
+
+}
+
+function next(){
+
+if(index<slides.length-1){
+
+index++;
+update();
+
+}
+
+}
+
+function prev(){
+
+if(index>0){
+
+index--;
+update();
+
+}
+
+}
+
+/* ========================= */
+/* TRANSITION */
+/* ========================= */
+
+function openSlides(){
+
+if(window.innerWidth <= 768){
+
+document.getElementById("wrapper").classList.add("showSlides");
+
+}else{
+
+document.getElementById("wrapper").style.transform="translateX(-50%)";
+
+}
+
+}
+
+function closeSlides(){
+
+if(window.innerWidth <= 768){
+
+document.getElementById("wrapper").classList.remove("showSlides");
+
+}else{
+
+document.getElementById("wrapper").style.transform="translateX(0%)";
+
+}
+
+}
+
+</script>
+<script>
+    /* L2RO TOASTY SYSTEM */
+
+window.addEventListener("load", () => {
+
+setTimeout(()=>{
+
+const el=document.getElementById("l2ro-toasty");
+
+el.classList.add("show");
+
+/* esconder depois */
+
+setTimeout(()=>{
+
+el.classList.remove("show");
+
+},4000);
+
+},1200);
+
+});
+
+window.addEventListener("resize", () => {
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+});
+</script>
+</body>
+</html>
