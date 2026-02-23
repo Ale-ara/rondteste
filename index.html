@@ -541,6 +541,7 @@ background:linear-gradient(90deg,#CC6319,#ff8c42);
 /* TOASTY */
 /* ========================= */
 
+/* CONTAINER TOASTY */
 #l2ro-toasty{
 
 position:fixed;
@@ -548,36 +549,53 @@ bottom:-200px;
 right:20px;
 
 display:flex;
+align-items:flex-end;
 gap:10px;
 
 opacity:0;
-
 transition:.5s;
 
 z-index:999;
 
 }
 
+/* PERSONAGEM */
+#l2ro-character{
+
+height:64px;
+
+image-rendering:pixelated;
+
+filter:drop-shadow(0 0 12px rgba(255,140,66,0.6));
+
+}
+
+/* BALÃO */
+#l2ro-bubble{
+
+background:linear-gradient(135deg,#CC6319,#ff8c42);
+
+padding:8px 14px;
+
+border-radius:12px;
+
+font-size:13px;
+font-weight:500;
+
+white-space:nowrap;
+
+max-width:200px;
+
+box-shadow:
+0 8px 20px rgba(255,140,66,0.35);
+
+}
+
+/* mostrar */
 #l2ro-toasty.show{
 
 bottom:20px;
 opacity:1;
-
-}
-
-#l2ro-character{
-height:70px;
-}
-
-#l2ro-bubble{
-
-background:linear-gradient(90deg,#CC6319,#ff8c42);
-
-padding:10px 15px;
-
-border-radius:12px;
-
-font-size:14px;
 
 }
 
